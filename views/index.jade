@@ -7,8 +7,20 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title= title
-    body 
-        center
+        base(href="/")
+        link(rel='stylesheet', href='css/index.css')
+        link(rel='stylesheet', href='css/bg.css')
+    body
+        .overlay
+
+        .container
             h1= title
-            h3 based on express.js UwU
+            h3 based on express.js n' jade UwU
+            br
+            a(href="/docs")
+                h4 docs?
         
+        .footer
+            span follow this project or contribute on 
+            a(href="https://github.com/KIZUNEParty/anime.frame")
+                span github
