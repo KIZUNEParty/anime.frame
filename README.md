@@ -3,7 +3,7 @@
 this is just an API that use to random anime frame from my database to display on your weeb site UwU
 
 ## Usage
- - Just fetch this api with axios or anything you free to used to `https://frame.kitzu.me`
+ - Just fetch this api with axios or anything you free to used to `https://frame.kitzu.me/rdm`
 
 ## Contribution
  - ### API
