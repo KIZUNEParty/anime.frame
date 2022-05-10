@@ -1,4 +1,4 @@
-- var title = "usage | anime.frame"
+- var title = "about | anime.frame"
 - let api = "https://frame.kitzu.me/rdm"
 
 doctype html
@@ -10,31 +10,28 @@ html(lang="en")
         title= title
         base(href="/")
         link(rel='stylesheet', href='css/docs/main.css')
-        link(rel='stylesheet', href='css/docs/usage.css')
-        script.
-            let copy = function() {
-                navigator.clipboard.writeText('https://frame.kitzu.me/rdm')
-                alert("Copied!")
-            }
+        link(rel='stylesheet', href='css/docs/about.css')
     body
         ul(class="nav")
             a(href="/" class="brand")
                 li anime.frame
             a(href="/docs")
                 li home
-            a(href="/docs/usage", class="active")
+            a(href="/docs/usage")
                 li usage
             a(href="/docs/contribution") 
                 li contribution
-            a(href="/docs/about") 
+            a(href="/docs/about", class="active") 
                 li about
 
         .container
-            h1 Usage
-            span(class="text") Just fetch this api with axios or anything you free to used to 
+            h1 About
+            h3 This project is created by <a href="https://github.com/dethMastery" target="_blank">dethMastery</a> on an organization named <a href="https://github.com/KIZUNEParty" target="_blank">KIZUNEParty</a>
+            h3 just feel free to use but leave me some credit :D
             br
             br
-            button(class="text link" onclick='copy()')= api
+            span contact : 
+            a(href="mailto:contact@detzz.in.th", target="_blank"): span contact@detzz.in.th
         
         .footer
             span follow this project or contribute this project on 

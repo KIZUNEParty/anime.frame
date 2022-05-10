@@ -33,10 +33,15 @@ function contribution(req, res) {
     res.render('docs/contribution.jade')
 }
 
+function about(req, res) {
+    res.render('docs/about.jade')
+}
+
 app.get('/', homePage)
 app.get('/docs', docs)
 app.get('/docs/usage', usage)
 app.get('/docs/contribution', contribution)
+app.get('/docs/about', about)
 
 app.get('/listing', (req, res) => {
     res.json(list)
