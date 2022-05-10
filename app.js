@@ -22,7 +22,7 @@ function homePage(req, res) {
 }
 
 function docs(req, res) {
-    res.render('docs.jade')
+    res.render('docs/index.jade')
 }
 
 app.get('/', homePage)

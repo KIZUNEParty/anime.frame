@@ -1,0 +1,44 @@
+- var title = "docs | anime.frame"
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        base(href="/")
+        link(rel='stylesheet', href='css/docs/main.css')
+        link(rel='stylesheet', href='css/docs/home.css')
+    body
+        ul(class="nav")
+            a(href="/" class="brand")
+                li anime.frame
+            a(href="/docs", class="active")
+                li home
+            a(href="/docs/usage")
+                li usage
+            a(href="/docs/contribute") 
+                li contribute
+            a(href="/docs/about") 
+                li about
+
+        .container
+            h1 Anime.Frame
+            p this is just an API that use to random anime frame from my database to display on your weeb site UwU
+            br
+            h3 let see the other menu
+            br
+            ul(class="submenu")
+                a(href="docs/usage")
+                    li usage
+                a(href="docs/contribute") 
+                    li contribute
+                a(href="docs/about") 
+                    li about
+            
+        
+        .footer
+            span follow this project or contribute on 
+            a(href="https://github.com/KIZUNEParty/anime.frame")
+                span github

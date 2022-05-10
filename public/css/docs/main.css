@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@200&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+
+    background-color: #242424;
+    color: whitesmoke;
+}
+
+:root {
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+a, div, span, p {
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+.nav {
+    width: auto;
+
+    text-align: right;
+    background: #101111;
+
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: whitesmoke;
+    background: #101111;
+    transition: all .3s;
+    padding: 1rem;
+}
+
+.nav a.brand {
+    float: left;
+}
+
+.nav a:hover {
+    background: #3C3D3D;
+}
+
+.nav .active {
+    background: #3C3D3D;
+}
+
+.nav li {
+    display: inline;
+}
+
+.container {
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    height: auto;
+    
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    background: whitesmoke;
+    color: #2e2f2f;
+
+    text-align: center;
+    font-weight: bold;
+
+    position: fixed;
+    bottom: 0;
+}
+
+.footer a {
+    color: #2e2f2f;
+    text-decoration: underline;
+    transition: all .5s;
+}
+
+.footer a:hover {
+    opacity: .8;
+    text-decoration: none;
+}

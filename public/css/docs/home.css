@@ -1,0 +1,25 @@
+.submenu {
+    padding: 0;
+}
+
+.submenu li {
+    display: inline;
+}
+
+.submenu a {
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    color: whitesmoke;
+    text-decoration: none;
+
+    background-color: #2e2f2f;
+    border-radius: 5px;
+
+    transition: all .3s;
+}
+
+.submenu a:hover {
+    opacity: 0.5;
+}
