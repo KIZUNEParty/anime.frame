@@ -1,0 +1,42 @@
+- var title = "usage | anime.frame"
+- let api = "https://frame.kitzu.me/rdm"
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        base(href="/")
+        link(rel='stylesheet', href='css/docs/main.css')
+        link(rel='stylesheet', href='css/docs/usage.css')
+        script.
+            let copy = function() {
+                navigator.clipboard.writeText('https://frame.kitzu.me/rdm')
+                alert("Copied!")
+            }
+    body
+        ul(class="nav")
+            a(href="/" class="brand")
+                li anime.frame
+            a(href="/docs")
+                li home
+            a(href="/docs/usage", class="active")
+                li usage
+            a(href="/docs/contribute") 
+                li contribute
+            a(href="/docs/about") 
+                li about
+
+        .container
+            h1 Usage
+            span(class="text") Just fetch this api with axios or anything you free to used to 
+            br
+            br
+            button(class="text link" onclick='copy()')= api
+        
+        .footer
+            span follow this project or contribute on 
+            a(href="https://github.com/KIZUNEParty/anime.frame")
+                span github

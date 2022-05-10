@@ -1,0 +1,13 @@
+.text {
+    font-size: 18px;
+}
+
+.link {
+    background: rgba(255, 255, 255, 0.3);
+    color: whitesmoke;
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
