@@ -6,11 +6,16 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
         title= title
+
         base(href="/")
+
         link(rel='stylesheet', href='css/index.css')
-        link(rel='stylesheet', href='css/bg.css')
+        link(rel='stylesheet', href='css/bg.css')       
     body
+        .bg
+
         .overlay
 
         .container
@@ -24,3 +29,20 @@ html(lang="en")
             span follow this project or contribute on 
             a(href="https://github.com/KIZUNEParty/anime.frame")
                 span github
+
+    block script
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(type="text/javascript").
+            function bgCall() {
+                let axx = axios.get('/rdm')
+
+               let axCall = axx.then((rsp) => rsp.data) 
+
+               return axCall
+            }
+
+            bgCall().then(data => {
+                console.log(data.url)
+
+                document.querySelector('.bg').style.background = "url('" + data.url + "')"
+            })
