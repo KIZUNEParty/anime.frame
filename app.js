@@ -48,12 +48,18 @@ app.get('/listing', (req, res) => {
 })
 
 app.get('/rdm', cors(forFree), (req, res) => {
-    let ep = list.link
+    let call = list
+    let callMAL = Math.floor(Math.random() * call.link)
+
+    let mal = call.list[callMAL].mal
+    
+    let ep = call.list[callMAL].ep
+
     let pat = Math.floor(Math.random() * ep)
     let path = pat - 1 + 2
-    // let path = 100
 
-    let frame = list.pic[pat].img
+    let frame = call.frame[callMAL].ep[pat].frame
+
     let pi = Math.floor(Math.random() * frame)
     let pic = pi - 1 + 2
 
@@ -77,7 +83,7 @@ app.get('/rdm', cors(forFree), (req, res) => {
         return rePi
     }
 
-    let link = "https://ani.kitzu.me/"+resPi(path)+"/frame"+resPi(pic)+".jpg"
+    let link = "https://ani.kitzu.me/"+mal+"/"+resPi(path)+"/frame"+resPi(pic)+".jpg"
 
     res.json({
         url: link
