@@ -85,3 +85,17 @@ a, div, span, p, button {
     opacity: .8;
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .nav .brand {
+        display: none;
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .nav {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
