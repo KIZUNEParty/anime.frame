@@ -17,6 +17,26 @@ let forFree = {
 
 let list = require('./db/listing.json')
 
+function resPi(m) {
+    let rePi
+
+    if(m < 10) {
+        rePi = '00000' + m
+    } else if (m < 100) {
+        rePi = '0000' + m
+    } else if (m < 1000) {
+        rePi = '000' + m
+    } else if (m < 10000) {
+        rePi = '00' + m
+    } else if (m < 100000) {
+        rePi = '0' + m
+    } else if (99999 < m) {
+        rePi = m
+    }
+
+    return rePi
+}
+
 function homePage(req, res) {
     res.render('index.jade')
 }
@@ -63,33 +83,38 @@ app.get('/rdm', cors(forFree), (req, res) => {
     let pi = Math.floor(Math.random() * frame)
     let pic = pi - 1 + 2
 
-    function resPi(m) {
-        let rePi
-
-        if(m < 10) {
-            rePi = '00000' + m
-        } else if (m < 100) {
-            rePi = '0000' + m
-        } else if (m < 1000) {
-            rePi = '000' + m
-        } else if (m < 10000) {
-            rePi = '00' + m
-        } else if (m < 100000) {
-            rePi = '0' + m
-        } else if (99999 < m) {
-            rePi = m
-        }
-
-        return rePi
-    }
-
-    let link = "https://ani.kitzu.me/"+mal+"/"+resPi(path)+"/frame"+resPi(pic)+".jpg"
+    let link = "https://ani.kitzu.me/"+resPi(mal)+"/"+resPi(path)+"/frame"+resPi(pic)+".jpg"
 
     res.json({
         url: link
     })
     
 })
+
+// app.get('/rdm/:mal', cors(forFree), (req,res) => {
+//     let search = req.params
+//     let call = list
+//     let check = 0
+
+//     for (let i = 0; i < call.link; i) {
+//         if (search == call.list[i].mal) {
+//             i = call.link;
+//             check = 1
+//         } else {
+//             i++
+//         }
+//     }
+
+//     if (check == 0) {
+//         final = "Not Found"
+//     } else {
+//         final = "Found"
+//     }
+
+//     res.json({
+//         "resp": final
+//     })
+// })
 
 app.listen(wPort, () => {
     console.log('Express starting @ http://localhost:' + wPort);
