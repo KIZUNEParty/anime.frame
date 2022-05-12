@@ -91,30 +91,36 @@ app.get('/rdm', cors(forFree), (req, res) => {
     
 })
 
-// app.get('/rdm/:mal', cors(forFree), (req,res) => {
-//     let search = req.params
-//     let call = list
-//     let check = 0
+app.get('/rdm/:mal', cors(forFree), (req,res) => {
+    let search = req.params.mal
+    let call = list
+    let mal
 
-//     for (let i = 0; i < call.link; i) {
-//         if (search == call.list[i].mal) {
-//             i = call.link;
-//             check = 1
-//         } else {
-//             i++
-//         }
-//     }
+    for(i=0; i<call.link; i++){
+        if (search == call.list[i].mal) {
+            console.log("Found!");
+            mal = call.list[i].mal
+            break;
+        }
+    }
 
-//     if (check == 0) {
-//         final = "Not Found"
-//     } else {
-//         final = "Found"
-//     }
+    let final;
+    console.log(i);
 
-//     res.json({
-//         "resp": final
-//     })
-// })
+    if (i < call.link) {
+        let path = Math.floor(Math.random() * call.list[i].ep)
+
+        let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
+
+        final = "https://ani.kitzu.me/"+resPi(mal)+"/"+resPi(path)+"/frame"+resPi(pic)+".jpg"
+    } else {
+        final = "Not Found!"
+    }
+
+    res.json({
+        "resp": final
+    })
+})
 
 app.listen(wPort, () => {
     console.log('Express starting @ http://localhost:' + wPort);
