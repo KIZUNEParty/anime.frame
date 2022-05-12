@@ -105,7 +105,6 @@ app.get('/rdm/:mal', cors(forFree), (req,res) => {
     }
 
     let final;
-    console.log(i);
 
     if (i < call.link) {
         let path = Math.floor(Math.random() * call.list[i].ep)

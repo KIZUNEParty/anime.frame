@@ -1,5 +1,6 @@
 - var title = "usage | anime.frame"
-- let api = "https://frame.kitzu.me/rdm"
+- let rdm = "https://frame.kitzu.me/rdm"
+- let id = "https://frame.kitzu.me/rdm/<MALID>"
 
 doctype html
 html(lang="en")
@@ -12,7 +13,7 @@ html(lang="en")
         link(rel='stylesheet', href='css/docs/main.css')
         link(rel='stylesheet', href='css/docs/usage.css')
         script.
-            let copy = function() {
+            let main = function() {
                 navigator.clipboard.writeText('https://frame.kitzu.me/rdm')
                 alert("Copied!")
             }
@@ -34,9 +35,46 @@ html(lang="en")
             span(class="text") Just fetch this api with axios or anything you free to used to 
             br
             br
-            button(class="text link" onclick='copy()')= api
+            button(class="text link" onclick='copy()')= rdm
+            br
+            br
+            br
+            h2 Category
+            span(class="text") Just using above API link and add `MAL ID` like this
+            br
+            br
+            button(class="text link" onclick='copy()')= rdm+"/<MAL ID>"
+            br
+            br
+            h2 Available category
+            ul(class="category")
+
+                
         
         .footer
             span follow this project or contribute this project on 
             a(href="https://github.com/KIZUNEParty/anime.frame")
                 span github
+
+    block script
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(type="text/javascript").
+            function bgCall() {
+                let axx = axios.get('/listing')
+
+                let axCall = axx.then((rsp) => rsp.data) 
+
+               return axCall
+            }
+
+            bgCall().then(data => {
+                for (i=0; i < data.link; i++) {
+                    console.log(data.list[i].mal)
+
+                    let mallist = document.createElement('li')
+
+                    mallist.innerText = data.list[i].mal
+
+                    document.querySelector('.category').appendChild(mallist)
+                }
+            })
