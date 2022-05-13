@@ -1,0 +1,125 @@
+- var title = "Gallery | anime.frame"
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        base(href="/")
+        link(rel='stylesheet', href='css/docs/main.css')
+        link(rel='stylesheet', href='css/gallery/index.css')
+    body
+        ul(class="nav")
+            a(href="/" class="brand")
+                li anime.frame
+            a(href="/gallery", class="active")
+                li gallery
+            a(href="/docs")
+                li docs
+            a(href="/docs/usage")
+                li usage
+            a(href="/docs/contribution") 
+                li contribution
+            a(href="/docs/about") 
+                li about
+
+        .container
+            h1 Gallery
+            p(class="back"): a(href="/gallery" class="back") &lt; back
+            .category
+
+        .footer
+            span follow this project or contribute this project on 
+            a(href="https://github.com/KIZUNEParty/anime.frame")
+                span github
+
+    block script
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(src="https://cdn.jsdelivr.net/gh/KIZUNEParty/anime.frame@main/script/digit.js")
+        script(type="text/javascript").
+            function bgCall() {
+                let axx = axios.get('/listing')
+
+                let axCall = axx.then((rsp) => rsp.data)
+
+               return axCall
+            }
+
+            bgCall().then(data => {
+                let url = window.location.href
+
+                let box = document.createElement('a')
+                box.setAttribute("style", "display: none;")
+                box.setAttribute("id", "url")
+                box.setAttribute("href", url)
+                box.innerText = url
+                document.querySelector('.category').appendChild(box)
+
+                let urlbox = document.querySelector('#url')
+                let query = urlbox.search
+                let parse = new URLSearchParams(query)
+                let idLink = parseInt(parse.get("id"))
+                let epLink = parse.get("ep")
+                console.log(idLink)
+                console.log(epLink)
+                console.log(" ")
+
+                let no;
+
+                for(d=0; d < data.link; d++){
+                    if (idLink == data.list[d].mal) {
+                        console.log("Found in DB!");
+                        no = d
+                        break;
+                    }
+                }
+
+                if(epLink < data.list[no].ep) {
+                    console.log('EP checked!')
+                } else {
+                    console.log('EP not found!')
+                    epLink = null
+                }
+
+                if (epLink != null) {
+                    for (i=0; i < 10; i++) {
+                        let mal = resPi(idLink)
+                        let ep = epLink
+                        let frame = resPi(Math.floor(Math.random() * data.frame[no].ep[ep].frame))
+
+                        let bg = 'https://ani.kitzu.me/'+mal+'/'+resPi(ep-1+2)+'/frame'+frame+'.jpg'
+
+                        let cover = document.createElement('a')
+                        let inside = document.createElement('div')
+
+                        cover.setAttribute("style", "background: url('"+bg+"')")
+                        cover.setAttribute("href", bg)
+                        cover.setAttribute("target", "_blank")
+
+                        cover.appendChild(inside)
+
+                        document.querySelector('.category').appendChild(cover)
+                    }
+                } else {
+                    for (i=0; i < data.list[no].ep; i++) {
+                        let mal = resPi(idLink)
+                        let ep = i
+                        let frame = resPi(Math.floor(Math.random() * data.frame[no].ep[ep].frame))
+
+                        let bg = 'https://ani.kitzu.me/'+mal+'/'+resPi(ep-1+2)+'/frame'+frame+'.jpg'
+
+                        let cover = document.createElement('a')
+                        let inside = document.createElement('div')
+
+                        inside.innerText = 'EP. ' + (ep - 1 + 2)
+                        cover.setAttribute("style", "background: url('"+bg+"')")
+                        cover.setAttribute("href", "/gallery/id?id=" + idLink + "&ep=" + ep)
+
+                        cover.appendChild(inside)
+
+                        document.querySelector('.category').appendChild(cover)
+                    }
+                }
+            })

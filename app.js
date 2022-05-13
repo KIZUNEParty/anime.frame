@@ -25,10 +25,14 @@ app.set('view engine', 'jade')
 // ==================================================================================================================
 
 app.get('/', page.homePage)
+
 app.get('/docs', page.docs)
 app.get('/docs/usage', page.usage)
 app.get('/docs/contribution', page.contribution)
 app.get('/docs/about', page.about)
+
+app.get('/gallery', page.gallery)
+app.get('/gallery/id', page.galleryID)
 
 let list = require('./db/listing.json')
 app.get('/listing', (req, res) => {

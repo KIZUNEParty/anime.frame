@@ -1,0 +1,69 @@
+- var title = "Gallery | anime.frame"
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+        base(href="/")
+        link(rel='stylesheet', href='css/docs/main.css')
+        link(rel='stylesheet', href='css/gallery/index.css')
+    body
+        ul(class="nav")
+            a(href="/" class="brand")
+                li anime.frame
+            a(href="/gallery", class="active")
+                li gallery
+            a(href="/docs")
+                li docs
+            a(href="/docs/usage")
+                li usage
+            a(href="/docs/contribution") 
+                li contribution
+            a(href="/docs/about") 
+                li about
+
+        .container
+            h1 Gallery
+            .category
+
+        .footer
+            span follow this project or contribute this project on 
+            a(href="https://github.com/KIZUNEParty/anime.frame")
+                span github
+
+    block script
+        script(src="https://unpkg.com/axios/dist/axios.min.js")
+        script(src="https://cdn.jsdelivr.net/gh/KIZUNEParty/anime.frame@main/script/digit.js")
+        script(type="text/javascript").
+            function bgCall() {
+                let axx = axios.get('/listing')
+
+                let axCall = axx.then((rsp) => rsp.data)
+
+               return axCall
+            }
+
+            bgCall().then(data => {
+                for (i=0; i < data.link; i++) {
+                    console.log(resPi(data.list[i].mal))
+                    let mal = resPi(data.list[i].mal)
+                    let ep = Math.floor(Math.random() * data.list[i].ep)
+                    let frame = resPi(Math.floor(Math.random() * data.frame[i].ep[ep].frame))
+
+                    let bg = 'https://ani.kitzu.me/'+mal+'/'+resPi(ep-1+2)+'/frame'+frame+'.jpg'
+
+                    let cover = document.createElement('a')
+                    let inside = document.createElement('div')
+
+                    inside.innerText = data.list[i].mal
+                    cover.setAttribute("style", "background: url('"+bg+"')")
+                    cover.setAttribute("href", "/gallery/id?id=" + data.list[i].mal)
+
+                    cover.appendChild(inside)
+
+                    document.querySelector('.category').appendChild(cover)
+                }
+            })

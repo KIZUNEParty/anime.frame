@@ -18,4 +18,12 @@ function about(req, res) {
     res.render('docs/about.jade')
 }
 
-module.exports = {homePage, docs, usage, contribution, about}
+function gallery(req,res) {
+    res.render('gallery/index.jade')
+}
+
+function galleryID(req,res) {
+    res.render('gallery/id.jade')
+}
+
+module.exports = {homePage, docs, usage, contribution, about, gallery, galleryID}
