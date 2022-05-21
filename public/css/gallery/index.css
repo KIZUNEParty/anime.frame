@@ -3,7 +3,7 @@
 }
 
 p.back {
-    width: 100% !important;
+    width: auto !important;
     text-align: left !important;
     padding-left: 4rem;
 }
