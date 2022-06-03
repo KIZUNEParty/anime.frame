@@ -55,7 +55,7 @@ app.get('/rdm', cors(forFree), (req, res) => {
     let pi = Math.floor(Math.random() * frame)
     let pic = pi - 1 + 2
 
-    let link = "https://ani.kitzu.me/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
+    let link = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
 
     res.json({
         url: link
@@ -83,7 +83,7 @@ app.get('/rdm/:mal', cors(forFree), (req,res) => {
 
         let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
 
-        final = "https://ani.kitzu.me/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
+        final = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
     } else {
         final = "Not Found!"
     }
