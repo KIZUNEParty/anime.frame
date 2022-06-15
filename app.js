@@ -1,6 +1,7 @@
 let exp = require('express')
 let path = require('path')
 let cors = require('cors')
+
 let app = exp()
 let wPort = 8090
 
@@ -63,7 +64,7 @@ app.get('/rdm', cors(forFree), (req, res) => {
     
 })
 
-app.get('/rdm/:mal', cors(forFree), (req,res) => {
+app.get('/rdm/:mal', cors(forFree), (req, res) => {
     let search = req.params.mal
     let call = list
     let mal
@@ -91,6 +92,27 @@ app.get('/rdm/:mal', cors(forFree), (req,res) => {
     res.json({
         "resp": final
     })
+})
+
+app.get('/imgRDM', cors(forFree), (req, res) => {
+    let call = list
+    let callMAL = Math.floor(Math.random() * call.link)
+
+    let mal = call.list[callMAL].mal
+    
+    let ep = call.list[callMAL].ep
+
+    let pat = Math.floor(Math.random() * ep)
+    let path = pat - 1 + 2
+
+    let frame = call.frame[callMAL].ep[pat].frame
+
+    let pi = Math.floor(Math.random() * frame)
+    let pic = pi - 1 + 2
+
+    let link = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
+
+    res.redirect(link)
 })
 
 // ==================================================================================================================
