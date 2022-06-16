@@ -94,7 +94,7 @@ app.get('/rdm/:mal', cors(forFree), (req, res) => {
     })
 })
 
-app.get('/imgRDM', cors(forFree), (req, res) => {
+app.get('/cdn', cors(forFree), (req, res) => {
     let call = list
     let callMAL = Math.floor(Math.random() * call.link)
 
