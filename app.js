@@ -80,7 +80,7 @@ app.get('/rdm/:mal', cors(forFree), (req, res) => {
     let final;
 
     if (i < call.link) {
-        let path = Math.floor(Math.random() * call.list[i].ep)
+        let path = Math.floor(Math.random() * call.list[i].ep) + 1
 
         let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
 
@@ -113,6 +113,37 @@ app.get('/cdn', cors(forFree), (req, res) => {
     let link = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
 
     res.redirect(link)
+})
+
+app.get('/cdn/:mal', cors(forFree), (req, res) => {
+    let search = req.params.mal
+    let call = list
+    let mal
+
+    for(i=0; i<call.link; i++){
+        if (search == call.list[i].mal) {
+            console.log("Found!");
+            mal = call.list[i].mal
+            break;
+        }
+    }
+
+    let final;
+
+    if (i < call.link) {
+        let path = Math.floor(Math.random() * call.list[i].ep) + 1
+
+        let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
+
+        final = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
+
+        res.redirect(final)
+    } else {
+        final = "Not Found!"
+        res.json({
+            "res": final
+        })
+    }
 })
 
 // ==================================================================================================================
