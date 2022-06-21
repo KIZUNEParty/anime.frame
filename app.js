@@ -80,7 +80,7 @@ app.get('/rdm/:mal', cors(forFree), (req, res) => {
     let final;
 
     if (i < call.link) {
-        let path = Math.floor(Math.random() * call.list[i].ep) + 1
+        let path = Math.floor(Math.random() * call.list[i].ep)
 
         let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
 
@@ -131,7 +131,7 @@ app.get('/cdn/:mal', cors(forFree), (req, res) => {
     let final;
 
     if (i < call.link) {
-        let path = Math.floor(Math.random() * call.list[i].ep) + 1
+        let path = Math.floor(Math.random() * call.list[i].ep)
 
         let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
 
