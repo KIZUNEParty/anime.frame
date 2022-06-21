@@ -80,9 +80,11 @@ app.get('/rdm/:mal', cors(forFree), (req, res) => {
     let final;
 
     if (i < call.link) {
-        let path = Math.floor(Math.random() * call.list[i].ep)
+        let pat = Math.floor(Math.random() * call.list[i].ep)
+        let path = pat - 1 + 2
 
-        let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
+        let pix = Math.floor(Math.random() * call.frame[i].ep[pat].frame)
+        let pic = pix - 1 + 2
 
         final = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
     } else {
@@ -131,17 +133,20 @@ app.get('/cdn/:mal', cors(forFree), (req, res) => {
     let final;
 
     if (i < call.link) {
-        let path = Math.floor(Math.random() * call.list[i].ep)
+        let pat = Math.floor(Math.random() * call.list[i].ep)
+        let path = pat - 1 + 2
 
-        let pic = Math.floor(Math.random() * call.frame[i].ep[path].frame)
+        let pix = Math.floor(Math.random() * call.frame[i].ep[pat].frame)
+        let pic = pix - 1 + 2
 
         final = "https://cdn.jsdelivr.net/gh/dont-tattled-on-me/animescene@main/"+digit.resPi(mal)+"/"+digit.resPi(path)+"/frame"+digit.resPi(pic)+".jpg"
 
         res.redirect(final)
     } else {
         final = "Not Found!"
+
         res.json({
-            "res": final
+            resp: "Not Found"
         })
     }
 })
